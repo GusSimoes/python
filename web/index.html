@@ -1,0 +1,202 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo Web</title>
+
+    <style>
+        #pagina {
+            width: 50%;
+            height: 100%;
+            background-color: tomato;
+            margin: auto;
+           
+        }
+
+
+        h1,h2{
+        color: aquamarine;
+
+        }
+        
+        table,th,td {
+
+            border: 1px solid black;
+        }
+
+        table.center {
+            width: 400px;
+            height: 100px;
+            margin-left: auto;
+            margin-right: auto;
+    
+        }
+
+        footer{
+            text-align: center;
+            padding: 12px;
+            background-color: aquamarine;
+            color: black;
+                }
+
+    </style>
+
+
+</head>
+<body onload="autoOpacidade()">
+    <div id="pagina"></div>
+
+    <!--Linguagem javascript-->
+    <script>
+        // comentar dentro do script
+        let pagina = document.getElementById('pagina');
+        let indImagem = 1;
+        let opacidade = 1;
+        let reduzir = true;
+        let posX = 10;
+        let ir = true;
+        
+        pagina.innerHTML = '<h2> Exemplo for </h2>'
+
+        //for (inicialização, condição; incremento)
+        for (i=1; i<5;i++){
+            pagina.innerHTML +=  '<h3>' + i + '<h3>';
+        }
+
+        pagina.innerHTML += '<h2> Exemplo do while</h2>'
+        var i = 1;
+        do {
+            pagina.innerHTML +=  '<h3>' + i + '<h3>';
+            i++;
+            }while (i < 5 );
+        pagina.innerHTML += '<img id ="imagem" onclick="trocarImagem()" src="https://softgraf.com/img/img1.jpg"/>'
+        function trocarImagem(){
+            var imagem = document.getElementById('imagem');
+            indImagem++;
+            if (indImagem > 7){
+                indImagem = 1;
+            }
+            imagem.src = "https://softgraf.com/img/img"+ indImagem + ".jpg";
+        }    
+        
+        const mudarOpacidade = () => {
+            var imagem = document.getElementById('imagem');
+            if (opacidade <= 0.1){
+                reduzir = false;
+                trocarImagem();
+            }else if (opacidade >=1)
+                reduzir = true;
+            if (reduzir){
+                opacidade -= 0.1
+            } else {
+                opacidade += 0.1;
+            }
+
+
+            imagem.style.opacity = opacidade;
+            moverImagem()
+
+            }
+
+        const autoOpacidade = () => {
+            setInterval("mudarOpacidade()",100);  //0.1segundo
+        }
+        const moverImagem = () =>{
+            if (ir){
+                posX += 10;
+            }else {
+                posX -=10;
+            }
+
+            if (posX > 300){
+                ir = false
+            } else if (posX < 0 ){
+                ir = true;
+            }
+
+
+            var imagem = document.getElementById('imagem');
+            imagem.style.marginLeft = posX;
+ 
+
+                        
+        }
+
+        
+    </script> 
+
+    <label>Baixando arquivo:</label>
+    <progress value="32" max="100">32%</progress>
+
+    <ol type="I">
+        <li>Item1</li>
+        <li>Item2</li>
+        <li>Item3</li>
+    </ol>
+
+    <ul style="list-style-type: square;">
+        <li>Café</li>
+        <li>Chá</li>
+    </ul>
+     <hr>
+     
+     <iframe width="900" height="500" src="https://www.youtube.com/embed/ricjCj01x1s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+     <hr>
+     <form action="https://nao_existe.py" method="post"> 
+        <label>Nome:</label>
+        <input type="text" name="nome"><br>
+        <label>Sobrenome:</label>
+        <input type="text" name="Sobrenome"><br>
+
+        <input type="submit" value="Enviar">
+     <hr>
+
+        <canvas id="meuCanvas"></canvas>
+
+        <script>
+            var canvas = document.getElementById('meuCanvas');
+            var ctx = canvas.getContext('2d');
+            ctx.fillStyle = 'red';
+            ctx.fillRect(20,20,75,50);
+            ctx.fillStyle = 'blue';
+            ctx.globalAlpha = 0.2; // cria transparência do objeto
+            ctx.fillRect(50,50,75,50);
+
+            ctx.fillStyle = 'green';
+            ctx.fillRect(80,80,75,50);
+
+        </script>
+
+     </form>
+     <h1> Exemplo de Link</h1>
+     <a href="https://softgraf.com" target="_blank">Curso Avançado</a>
+
+     <h1>Exemplo de Tabela</h1>
+     <table class="center">
+        <tr>
+            <th>Mês</th>
+            <th>Recebimento</th>
+        </tr>
+        
+        <tr>
+            <td>Janeiro</td>
+            <td>R$ 100</td>
+        </tr> 
+            <tr>    
+            <td>Fevereiro</td>
+            <td>R$ 200</td>
+
+        </tr>
+     </table>
+
+     <footer>
+        <p>Autor: Gustavo Simões</p>
+        <a href="https://softgraf.com" target="_blank">SOFTGRAF Cursos Avançados</a>
+
+     </footer>
+
+
+</body>
+</html>
