@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.css')}}">
+</head>
+<body>
+
+<div class="container">
+
+    {% with mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+    <ul id="mensagens" class="list-unstyled">
+
+        {% for mensagem in mensagens %}
+        <li class="alert alert-danger">{{mensagem}}</li>
+        {% endfor %}
+
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    <h1>Faça seu login</h1>
+    <form action="{{url_for('autenticar')}}" method="post">
+        <label>Nome de usuário:</label>
+        <input type="text" class="form-control" name="usuario" required/>
+
+        <label>Senha:</label>
+        <input type="password" class="form-control" name="senha" required/>
+        <br>
+        <button type="submit" class="btn btn-secondary">Entrar</button>
+
+    </form>
+
+
+</div>
+
+</body>
+</html>
